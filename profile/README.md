@@ -1,36 +1,30 @@
 # Aelira AI
 
-**Open-source accessibility compliance for higher education.**
+**Accessibility remediation for course content. It returns fixed files, not a list of problems.**
 
-Aelira helps universities and colleges meet WCAG 2.1 accessibility standards. We scan documents for violations and use AI to automatically generate remediated files — not just reports, but working fixes.
+Aelira helps universities and colleges meet WCAG 2.1 AA, including the US DOJ ADA Title II deadlines (26 April 2027 for large public entities, 26 April 2028 for smaller ones). Most tools tell you a PDF has no tags; Aelira gives you back a remediated file, with a report of what changed and why.
 
-## Our Projects
+## Projects
 
 ### [aelira-core](https://github.com/Aelira-AI/aelira-core)
-The platform — FastAPI backend + React dashboard. Scans PDFs, Word docs, PowerPoints, spreadsheets, LaTeX, websites, images, and video. Integrates with Canvas, Blackboard, Moodle, Google Workspace, and Microsoft 365.
-**AGPL-3.0**
+The engine and dashboard — FastAPI backend, React dashboard, and the command-line tool, all in one repo with one CI run. Scans and remediates PDFs, Word, PowerPoint, Excel, LaTeX, web pages, images, and video. Reads course content directly from Canvas, Blackboard, Moodle, and Brightspace over LTI 1.3, plus Google Drive and Microsoft 365. **AGPL-3.0** (CLI under `cli/` is MIT).
 
-### [aelira-cli](https://github.com/Aelira-AI/aelira-cli)
-Command-line tool for accessibility scanning. Scan individual files or entire directories from your terminal.
-**MIT**
+## What makes Aelira different
 
-## What Makes Aelira Different
+- **Severity is computed, not generated.** A plain function of the rule that fired — the same file produces the same result on every scan. There's a test that fails if it ever doesn't.
+- **Remediation over reporting.** You get fixed files and written-back LMS content, review-gated with an audit log and rollback.
+- **Bring your own model.** Gemini, OpenAI, Anthropic, xAI, any OpenAI-compatible endpoint — or fully local via Ollama, where documents never leave your servers.
+- **Genuinely self-hostable.** One `docker compose` command to try it; the open core is the full engine, not a demo.
 
-- **AI-generated fixes**, not just violation reports
-- **LaTeX and MathML support** for STEM content
-- **Self-hosted AI** via Ollama — your data stays on your servers
-- **LMS integration** — scan files directly from Canvas, Blackboard, Moodle
-- **Open source** — deploy on your own infrastructure
+## Get involved
 
-## Get Involved
+Contributions welcome — start with the [contributing guide](https://github.com/Aelira-AI/aelira-core/blob/main/CONTRIBUTING.md) and the [developer onboarding](https://github.com/Aelira-AI/aelira-core/blob/main/docs/development/onboarding.md).
 
-We welcome contributions! Check out our [contributing guide](https://github.com/Aelira-AI/aelira-core/blob/main/CONTRIBUTING.md) to get started.
-
-- [Report a bug](https://github.com/Aelira-AI/aelira-core/issues/new)
-- [Request a feature](https://github.com/Aelira-AI/aelira-core/issues/new)
+- [Report a bug](https://github.com/Aelira-AI/aelira-core/issues/new?template=bug_report.md)
+- [Request a feature](https://github.com/Aelira-AI/aelira-core/issues/new?template=feature_request.md)
 - [Security policy](https://github.com/Aelira-AI/aelira-core/blob/main/SECURITY.md)
 
 ## Links
 
-- [aelira.ai](https://aelira.ai)
-- [Documentation](https://help.aelira.ai)
+- [aelira.ai](https://aelira.ai) — the hosted service
+- [Self-hosting guide](https://github.com/Aelira-AI/aelira-core/blob/main/docs/deployment/self-hosting.md)
