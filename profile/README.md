@@ -2,6 +2,9 @@
 
 **Open-source accessibility scanning and supported remediation for higher education.**
 
+[![Aelira Core CI](https://github.com/Aelira-AI/aelira-core/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Aelira-AI/aelira-core/actions/workflows/ci.yml)
+[![Latest core release](https://img.shields.io/github/v/release/Aelira-AI/aelira-core?display_name=tag)](https://github.com/Aelira-AI/aelira-core/releases/latest)
+
 Aelira helps institutions find accessibility issues in course materials and apply supported changes, with recorded outcomes and human review. Our public core covers documents, LMS course content, web pages and media.
 
 **The core is in beta and under active validation.** Some files need manual work, and some cannot produce a downloadable remediated artifact. Automated scores describe scanner findings, not accessibility conformance. Review any saved candidate before publishing it.
@@ -38,10 +41,12 @@ Our longer-term goal is an accessibility specialist model. This is a research di
 Founded and technically maintained by [RD (Reg) Crampton](https://github.com/rdcrampton). Contributions, evaluation collaborators and accessibility practitioner feedback are welcome.
 
 - [Contributing guide](https://github.com/Aelira-AI/aelira-core/blob/main/CONTRIBUTING.md)
+- [Maintainers and governance](https://github.com/Aelira-AI/aelira-core/blob/main/GOVERNANCE.md)
+- [Support routes](https://github.com/Aelira-AI/aelira-core/blob/main/SUPPORT.md)
 - [Developer onboarding](https://github.com/Aelira-AI/aelira-core/blob/main/docs/development/onboarding.md)
 - [Discussions and setup questions](https://github.com/Aelira-AI/aelira-core/discussions)
 - [Report a bug](https://github.com/Aelira-AI/aelira-core/issues/new?template=bug_report.yml)
 - [Request a feature](https://github.com/Aelira-AI/aelira-core/issues/new?template=feature_request.yml)
 - [Security reporting policy](https://github.com/Aelira-AI/aelira-core/blob/main/SECURITY.md)
 
-[Website](https://aelira.ai) · [Self-hosting guide](https://github.com/Aelira-AI/aelira-core/blob/main/docs/deployment/self-hosting.md)
+[Website](https://aelira.ai) · [LinkedIn](https://www.linkedin.com/company/aelira-ai) · [X](https://x.com/Aelira_dot_AI) · [Self-hosting guide](https://github.com/Aelira-AI/aelira-core/blob/main/docs/deployment/self-hosting.md)
