@@ -1,52 +1,87 @@
-# Aelira AI
+<h1 align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/hero-light.svg">
+    <img src="assets/hero-light.svg" width="100%" alt="Aelira AI: universal access, without the busywork. Open-source accessibility tools for higher education.">
+  </picture>
+</h1>
 
-**Open-source accessibility scanning and supported remediation for higher education.**
+<p align="center"><strong>We build open-source tools that find accessibility problems in course content, fix what can be fixed safely, and show a person exactly what changed.</strong></p>
 
-[![Aelira Core CI](https://github.com/Aelira-AI/aelira-core/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Aelira-AI/aelira-core/actions/workflows/ci.yml)
-[![Latest core release](https://img.shields.io/github/v/release/Aelira-AI/aelira-core?display_name=tag)](https://github.com/Aelira-AI/aelira-core/releases/latest)
+<p align="center">
+  <a href="https://github.com/Aelira-AI/aelira-core/releases/latest"><img alt="Latest Aelira Core release" src="https://img.shields.io/github/v/release/Aelira-AI/aelira-core?display_name=tag&sort=semver&label=aelira-core"></a>
+  <a href="https://github.com/Aelira-AI/aelira-core/blob/main/LICENSE"><img alt="Licence: AGPL-3.0" src="https://img.shields.io/github/license/Aelira-AI/aelira-core"></a>
+  <a href="https://github.com/sponsors/Aelira-AI"><img alt="Sponsor Aelira AI on GitHub" src="https://img.shields.io/badge/sponsor-GitHub%20Sponsors-7a3d8f?logo=githubsponsors&logoColor=white"></a>
+</p>
 
-Aelira helps institutions find accessibility issues in course materials and apply supported changes, with recorded outcomes and human review. Our public core covers documents, LMS course content, web pages and media.
+<p align="center">
+  <a href="https://aelira.ai">Website</a> ·
+  <a href="https://aelira.ai/docs">Docs</a> ·
+  <a href="https://aelira.ai/us/blog">Blog</a> ·
+  <a href="https://github.com/Aelira-AI/aelira-core/discussions">Discussions</a> ·
+  <a href="https://github.com/Aelira-AI/aelira-core/blob/main/SECURITY.md">Security</a> ·
+  <a href="https://github.com/sponsors/Aelira-AI">Sponsor</a>
+</p>
 
-**The core is in beta and under active validation.** Some files need manual work, and some cannot produce a downloadable remediated artifact. Automated scores describe scanner findings, not accessibility conformance. Review any saved candidate before publishing it.
+Universities and colleges have to make course materials accessible, and most of that work is manual: opening PDFs one at a time, writing alt text, fixing tables and headings, captioning lectures. Aelira automates the parts that can be done reliably and keeps a person in charge of everything else. In the US, public institutions face WCAG 2.1 AA deadlines under the DOJ ADA Title II rule (26 April 2027 for entities serving 50,000 or more people, 26 April 2028 for smaller ones).
 
 ## Aelira Core
 
-**[aelira-core](https://github.com/Aelira-AI/aelira-core)** contains the FastAPI engine, React dashboard and TypeScript command-line client.
+**[aelira-core](https://github.com/Aelira-AI/aelira-core)** is the whole product, free to self-host. It contains the FastAPI engine, the React dashboard and the [`@aelira/cli`](https://github.com/Aelira-AI/aelira-core/tree/main/cli) command-line client.
 
-- **Documents:** PDF, Word, PowerPoint, Excel and LaTeX scanning, supported remediation and review artifacts.
-- **LMS:** course discovery, scanning and provider-specific remediation workflows.
-- **Web:** browser-based accessibility detection and generated code fixes.
-- **Media:** transcription, captions and related review outputs.
+| Area | What you get |
+|---|---|
+| <img src="assets/icons/document-magnifying-glass.svg" width="24" height="24" alt=""> **Scans** | PDF, Word, PowerPoint, Excel and LaTeX documents, web pages, audio and video. Severity comes from fixed rules, not a language model. |
+| <img src="assets/icons/wrench-screwdriver.svg" width="24" height="24" alt=""> **Remediates** | Format-specific fixes where the file exposes a safe target: tags, headings, tables, alternative text, OCR text layers, MathML and captions. Ambiguous cases stay open. |
+| <img src="assets/icons/academic-cap.svg" width="24" height="24" alt=""> **Connects** | Canvas, Brightspace, Blackboard and Moodle, plus Google Drive and Microsoft 365. Maturity differs by platform; check the [integration status table](https://github.com/Aelira-AI/aelira-core#lms-integration-status). |
+| <img src="assets/icons/clipboard-document-check.svg" width="24" height="24" alt=""> **Records review** | A reviewer approves the exact saved file before it is published or written back, and evidence packages keep the scan results, decisions and file hashes together. |
 
-See the [quickstart](https://github.com/Aelira-AI/aelira-core#try-it-in-one-command) and [document capability guide](https://github.com/Aelira-AI/aelira-core/blob/main/docs/document-remediation/README.md) for the current scope.
+```bash
+git clone https://github.com/Aelira-AI/aelira-core.git
+cd aelira-core
+docker compose -f docker-compose.quickstart.yml up -d
+```
 
-The self-hosted core is free, with no paid feature tier. The engine and dashboard are **AGPL-3.0**; the [CLI](https://github.com/Aelira-AI/aelira-core/tree/main/cli) is **MIT-licensed**. Hosted infrastructure and support are available through [aelira.ai](https://aelira.ai).
+That starts a scanner with AI turned off. You choose the AI provider, cloud or local through Ollama, and nothing is sent to a service you did not select. See the [quickstart](https://github.com/Aelira-AI/aelira-core#try-it-in-one-command) and the [self-hosting guide](https://github.com/Aelira-AI/aelira-core/blob/main/docs/deployment/self-hosting.md).
 
-## Integration and review limits
+The engine and dashboard are AGPL-3.0 and the CLI is MIT. There is no paid feature tier. Hosted infrastructure and support are available through [aelira.ai](https://aelira.ai).
 
-Integration maturity varies. Canvas is integration verified, with institution-specific user-journey acceptance still needed. Brightspace is beta; Blackboard and Moodle are experimental. Moodle uses a REST API connector. Review the [current LMS status table](https://github.com/Aelira-AI/aelira-core#lms-integration-status) before relying on a connector. Google Drive and Microsoft 365 connectors are also available, with permissions and operation limits described in the core documentation.
+## Where things stand
 
-Severity is computed from scanner rule and impact data rather than generated by a language model. Supported remediation changes differ by format and source structure; ambiguous or unsupported cases remain unresolved.
+Aelira Core is in **beta**. Some files still need manual work, and some cannot produce a downloadable remediated file. An automated score describes what our scanners found; it does not establish accessibility conformance. Review any remediated file before you publish it.
 
-You can select a cloud AI provider or configure local inference through Ollama. Institution-controlled AI processing depends on the actual provider, fallback, storage, logging and network settings. Local inference alone does not establish a privacy or compliance guarantee. See the [self-hosting guide](https://github.com/Aelira-AI/aelira-core/blob/main/docs/deployment/self-hosting.md) and [LMS AI policy guide](https://github.com/Aelira-AI/aelira-core/blob/main/docs/deployment/lms-ai-policy.md).
+## How we build
+
+We build in public, and that includes our mistakes. Every release ships notes that say what changed, what was not verified, and what operators need to do. When a claim in earlier notes turns out to be wrong, we add a dated correction rather than editing it away. Security advisories we cannot fix yet are listed with their reasoning and a review date.
+
+- [Release notes](https://github.com/Aelira-AI/aelira-core/releases)
+- [Security policy and reporting](https://github.com/Aelira-AI/aelira-core/blob/main/SECURITY.md)
+- [Governance and maintainers](https://github.com/Aelira-AI/aelira-core/blob/main/GOVERNANCE.md)
+- [Open issues](https://github.com/Aelira-AI/aelira-core/issues)
 
 ## Research direction
 
-We aim to evaluate how AI assists practitioners with accessibility remediation, including source fidelity, errors and the time spent checking outputs. Planned comparisons include generalist agents, specialised accessibility workflows and further-trained open-weight models.
+We want to measure how much AI actually helps accessibility practitioners: how faithful its output is to the source, how often it is wrong, and how long people spend checking it. Planned comparisons include general-purpose agents, specialised accessibility workflows and open-weight models trained further for the task. The longer-term aim is an accessibility specialist model, with evaluation tools, rights-cleared material and findings published openly.
 
-Our longer-term goal is an accessibility specialist model. This is a research direction, with public evaluation tools, rights-cleared material and findings as intended outputs.
+## Get involved
 
-## People and contributions
+| If you are... | Start here |
+|---|---|
+| Evaluating Aelira for an institution | [Quickstart](https://github.com/Aelira-AI/aelira-core#try-it-in-one-command) and [Discussions](https://github.com/Aelira-AI/aelira-core/discussions) |
+| An accessibility practitioner | Tell us where the output falls short in [Discussions](https://github.com/Aelira-AI/aelira-core/discussions) |
+| A developer | [Contributing guide](https://github.com/Aelira-AI/aelira-core/blob/main/CONTRIBUTING.md) and [developer onboarding](https://github.com/Aelira-AI/aelira-core/blob/main/docs/development/onboarding.md) |
+| Reporting a problem | [Bug report](https://github.com/Aelira-AI/aelira-core/issues/new?template=bug_report.yml) or [feature request](https://github.com/Aelira-AI/aelira-core/issues/new?template=feature_request.yml) |
+| Reporting a vulnerability | Follow the [security policy](https://github.com/Aelira-AI/aelira-core/blob/main/SECURITY.md); please do not open a public issue |
 
-Founded and technically maintained by [RD (Reg) Crampton](https://github.com/rdcrampton). Contributions, evaluation collaborators and accessibility practitioner feedback are welcome.
+## Support the work
 
-- [Contributing guide](https://github.com/Aelira-AI/aelira-core/blob/main/CONTRIBUTING.md)
-- [Maintainers and governance](https://github.com/Aelira-AI/aelira-core/blob/main/GOVERNANCE.md)
-- [Support routes](https://github.com/Aelira-AI/aelira-core/blob/main/SUPPORT.md)
-- [Developer onboarding](https://github.com/Aelira-AI/aelira-core/blob/main/docs/development/onboarding.md)
-- [Discussions and setup questions](https://github.com/Aelira-AI/aelira-core/discussions)
-- [Report a bug](https://github.com/Aelira-AI/aelira-core/issues/new?template=bug_report.yml)
-- [Request a feature](https://github.com/Aelira-AI/aelira-core/issues/new?template=feature_request.yml)
-- [Security reporting policy](https://github.com/Aelira-AI/aelira-core/blob/main/SECURITY.md)
+Aelira Core is free and stays free. [GitHub Sponsors](https://github.com/sponsors/Aelira-AI) funds maintenance, security work and the evaluation research. If sponsoring is not an option, a star, a bug report or telling another institution about the project helps too.
 
-[Website](https://aelira.ai) · [LinkedIn](https://www.linkedin.com/company/aelira-ai) · [X](https://x.com/Aelira_dot_AI) · [Self-hosting guide](https://github.com/Aelira-AI/aelira-core/blob/main/docs/deployment/self-hosting.md)
+---
+
+<p align="center">
+  Founded by <a href="https://github.com/rdcrampton">RD (Reg) Crampton</a> ·
+  <a href="https://aelira.ai">aelira.ai</a> ·
+  <a href="https://www.linkedin.com/company/aelira-ai">LinkedIn</a> ·
+  <a href="https://x.com/Aelira_dot_AI">X</a>
+</p>
