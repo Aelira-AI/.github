@@ -10,7 +10,7 @@
 
 <p align="center">
   <a href="https://github.com/Aelira-AI/aelira-core/releases/latest"><img alt="Latest Aelira Core release" src="https://img.shields.io/github/v/release/Aelira-AI/aelira-core?display_name=tag&sort=semver&label=aelira-core"></a>
-  <a href="https://github.com/Aelira-AI/aelira-core/blob/main/LICENSE"><img alt="Licence: AGPL-3.0" src="https://img.shields.io/github/license/Aelira-AI/aelira-core"></a>
+  <a href="https://github.com/Aelira-AI/aelira-core/blob/main/LICENSE"><img alt="Licence: AGPL-3.0" src="https://img.shields.io/github/license/Aelira-AI/aelira-core?color=2e2963"></a>
   <a href="https://github.com/sponsors/Aelira-AI"><img alt="Sponsor Aelira AI on GitHub" src="https://img.shields.io/badge/sponsor-GitHub%20Sponsors-7a3d8f?logo=githubsponsors&logoColor=white"></a>
 </p>
 
